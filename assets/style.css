@@ -1,0 +1,35 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+.card a {
+  align-items: center;
+}
+.card a .icon {
+  width: 75px;
+  height: 75px;
+}
+.card img {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+.card ul li {
+  display: inline;
+  margin-left: 25px;
+  margin-right: 10px;
+}
+
+h1 {
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */
