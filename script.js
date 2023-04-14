@@ -3,6 +3,13 @@ function $(tag){
     return document.createElement(tag);
 }
 
+function sortYear(){
+    collection.releaseYear.sort();
+}
+function sortTitle(){
+    collection.title.sort();
+}
+
 // Variables
 const collection = [
     {
@@ -153,7 +160,7 @@ const collection = [
 const cardContainer = document.getElementById("card-container");
 
 // Program
-for (let i=0; i<collection.length; i++) {
+for (let i=0; i<collection.length; i++){
     let card = $("div");
     card.classList.add("card");
     
@@ -163,22 +170,28 @@ for (let i=0; i<collection.length; i++) {
     let title = $("h2");
     title.textContent = collection[i].title;
 
+    // Content
+    let content = $('div');
+    content.className = "content";
+
     // Development studio
     let developer = $("p");
     developer.textContent = collection[i].developer;
     developer.className = "developer";
+    content.appendChild(developer);
 
     // Release year
     let releaseYear = $("p");
     releaseYear.textContent = collection[i].releaseYear;
     releaseYear.className = "releaseYear";
+    content.appendChild(releaseYear);
 
     // Category 
     let stylesT = $('p');
     stylesT.textContent = "Category:";
     stylesT.className = "subTitle";
     let styles = $("ul");
-    for (let j=0; j<collection[i].styles.length; j++) {
+    for (let j=0; j<collection[i].styles.length; j++){
         const style = $("li");
         style.textContent = collection[i].styles[j];
         styles.appendChild(style);
@@ -190,13 +203,15 @@ for (let i=0; i<collection.length; i++) {
         }
     }
     styles.className = "styles";
+    content.appendChild(stylesT);
+    content.appendChild(styles);
 
     // Platforms
     let platformsT = $('p');
     platformsT.textContent = "Platforms:";
     platformsT.className = "subTitle";
     let platforms = $("ul");
-    for (let j=0; j<collection[i].platforms.length; j++) {
+    for (let j=0; j<collection[i].platforms.length; j++){
         const platform = $("li");
         platform.textContent = collection[i].platforms[j];
         platforms.appendChild(platform);
@@ -208,28 +223,30 @@ for (let i=0; i<collection.length; i++) {
         }
     }
     platforms.className = "platforms";
+    content.appendChild(platformsT);
+    content.appendChild(platforms);
 
-
+    // Icon / Link
     let websiteLink = $("a");
     websiteLink.href = collection[i].linkJv;
     websiteLink.target = "_blank";
-
     let websiteIcon = $("img");
     websiteIcon.src = "assets/img/jeuxvideocom.jpg";
     websiteIcon.className = "icon";
-
-    websiteLink.appendChild(websiteIcon)
+    websiteLink.appendChild(websiteIcon);
+    content.appendChild(websiteLink);
 
     card.appendChild(img);
     card.appendChild(title);
-    card.appendChild(developer);
-    card.appendChild(releaseYear);
-    card.appendChild(stylesT)
-    card.appendChild(styles);
-    card.appendChild(platformsT);
-    card.appendChild(platforms);
-    card.appendChild(websiteLink);
-    console.log(card);
+    // card.appendChild(developer);
+    // card.appendChild(releaseYear);
+    // card.appendChild(stylesT)
+    // card.appendChild(styles);
+    // card.appendChild(platformsT);
+    // card.appendChild(platforms);
+    // card.appendChild(websiteLink);
+    // console.log(card);
+    card.appendChild(content);
 
     cardContainer.appendChild(card);
 }
